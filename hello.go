@@ -7,7 +7,10 @@ import "fmt"
 const greetingPrefix = "Hello "
 
 func Hello(name string) string {
-	return greetingPrefix + name + "!"
+	if name == "" {
+		name = "Go"
+	}
+	return greetingPrefix + name
 }
 
 func main() {
