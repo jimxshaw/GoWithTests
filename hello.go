@@ -1,20 +1,23 @@
 package main
 
-// #1
+// #1 Hello, World
 
 import "fmt"
 
-const greetingPrefix = "Hello "
+const langSpanish = "Spanish"
+const greetingEnglishPrefix = "Hello "
+const greetingSpanishPrefix = "Hola "
 
 func Hello(name string, language string) string {
 	if name == "" {
 		name = "Go"
 	}
 
-	if language == "Spanish" {
-		return "Hola " + name
+	if language == langSpanish {
+		return greetingSpanishPrefix + name
 	}
-	return greetingPrefix + name
+
+	return greetingEnglishPrefix + name
 }
 
 func main() {
