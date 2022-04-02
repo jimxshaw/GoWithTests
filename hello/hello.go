@@ -1,7 +1,5 @@
 package main
 
-// #1 Hello, World
-
 import "fmt"
 
 const langSpanish = "Spanish"
