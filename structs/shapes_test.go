@@ -15,27 +15,24 @@ func TestPerimeter(t *testing.T) {
 }
 
 func TestArea(t *testing.T) {
-	checkArea := func(t testing.TB, shape Shape, expected float64) {
-		t.Helper()
-		got := shape.Area()
-
-		if got != expected {
-			// The g format string will print more
-			// precise decimal number in the message.
-			t.Errorf("expected %g but got %g", expected, got)
-		}
+	areaTests := []struct {
+		Shape    Shape
+		Expected float64
+	}{
+		{Shape: Rectangle{Width: 2.0, Height: 4.0}, Expected: 8.0},
+		{Shape: Circle{Radius: 10.0}, Expected: 314.1592653589793},
+		{Shape: Triangle{Base: 6, Height: 6}, Expected: 18.0},
 	}
 
-	t.Run("Rectangles", func(t *testing.T) {
-		rectangle := Rectangle{2.0, 4.0}
-		expected := 8.0
-		checkArea(t, rectangle, expected)
-	})
+	// This is an example of Table Driven Testing:
+	// https://github.com/golang/go/wiki/TableDrivenTests
+	for _, tableTest := range areaTests {
+		got := tableTest.Shape.Area()
 
-	t.Run("Circles", func(t *testing.T) {
-		circle := Circle{10.0}
-		expected := 314.1592653589793
-		checkArea(t, circle, expected)
-	})
-
+		if got != tableTest.Expected {
+			// The g format string will print more
+			// precise decimal number in the message.
+			t.Errorf("expected %g but got %g", tableTest.Expected, got)
+		}
+	}
 }
