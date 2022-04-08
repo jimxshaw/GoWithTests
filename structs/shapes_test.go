@@ -10,6 +10,8 @@ func TestPerimeter(t *testing.T) {
 	expected := 20.0
 
 	if got != expected {
+		// The new f format string is for
+		// float64 to 2 decimal places.
 		fmt.Errorf("expected %.2f but got %.2f", expected, got)
 	}
 }
