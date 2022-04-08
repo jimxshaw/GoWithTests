@@ -1,6 +1,9 @@
 package arrays
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func TestSum(t *testing.T) {
 	t.Run("Collection of size 5", func(t *testing.T) {
@@ -26,5 +29,15 @@ func TestSum(t *testing.T) {
 			t.Errorf("expected %d but got %d given %v", expected, got, expected)
 		}
 	})
+}
 
+func TestSumAll(t *testing.T) {
+	got := SumAll([]int{1, 2}, []int{7, 3, 2})
+	expected := []int{3, 12}
+
+	// DeepEqual (not type safe) checks if any two
+	// variables are equal.
+	if !reflect.DeepEqual(got, expected) {
+		t.Errorf("expected %d but got %d", expected, got)
+	}
 }
