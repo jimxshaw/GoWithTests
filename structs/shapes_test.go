@@ -15,26 +15,27 @@ func TestPerimeter(t *testing.T) {
 }
 
 func TestArea(t *testing.T) {
-	t.Run("Rectangles", func(t *testing.T) {
-		rectangle := Rectangle{2.0, 4.0}
-		got := rectangle.Area()
-		expected := 8.0
-
-		if got != expected {
-			t.Errorf("expected %.2f but got %.2f", expected, got)
-		}
-	})
-
-	t.Run("Circles", func(t *testing.T) {
-		circle := Circle{10.0}
-		got := circle.Area()
-		expected := 314.1592653589793
+	checkArea := func(t testing.TB, shape Shape, expected float64) {
+		t.Helper()
+		got := shape.Area()
 
 		if got != expected {
 			// The g format string will print more
 			// precise decimal number in the message.
 			t.Errorf("expected %g but got %g", expected, got)
 		}
+	}
+
+	t.Run("Rectangles", func(t *testing.T) {
+		rectangle := Rectangle{2.0, 4.0}
+		expected := 8.0
+		checkArea(t, rectangle, expected)
+	})
+
+	t.Run("Circles", func(t *testing.T) {
+		circle := Circle{10.0}
+		expected := 314.1592653589793
+		checkArea(t, circle, expected)
 	})
 
 }
