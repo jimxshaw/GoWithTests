@@ -14,7 +14,7 @@ func SumAll(numbersToSum ...[]int) []int {
 	// whatever the length of the numbers.
 	sums := make([]int, lengthOfNumbers)
 
-	for i, numbers := range numbersToSum {
+	for _, numbers := range numbersToSum {
 		sums = append(sums, Sum(numbers))
 	}
 
