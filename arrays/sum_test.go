@@ -32,11 +32,20 @@ func TestSum(t *testing.T) {
 }
 
 func TestSumAll(t *testing.T) {
-	got := SumAll([]int{1, 2}, []int{7, 3, 2})
-	expected := []int{3, 12}
+	got := SumAll([]int{1, 2}, []int{7, 3})
+	expected := []int{3, 10}
 
 	// DeepEqual (not type safe) checks if any two
 	// variables are equal.
+	if !reflect.DeepEqual(got, expected) {
+		t.Errorf("expected %d but got %d", expected, got)
+	}
+}
+
+func TestSumAllTails(t *testing.T) {
+	got := SumAllTails([]int{1, 2}, []int{7, 3})
+	expected := []int{2, 3}
+
 	if !reflect.DeepEqual(got, expected) {
 		t.Errorf("expected %d but got %d", expected, got)
 	}
