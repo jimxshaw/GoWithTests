@@ -32,7 +32,7 @@ func TestArea(t *testing.T) {
 		if got != tableTest.Expected {
 			// The g format string will print more
 			// precise decimal number in the message.
-			t.Errorf("expected %g but got %g", tableTest.Expected, got)
+			t.Errorf("%#v expected %g but got %g", tableTest.Shape, tableTest.Expected, got)
 		}
 	}
 }
