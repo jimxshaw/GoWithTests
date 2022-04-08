@@ -21,6 +21,7 @@ func TestArea(t *testing.T) {
 	}{
 		{Rectangle{2.0, 4.0}, 8.0},
 		{Circle{10.0}, 314.1592653589793},
+		{Triangle{6, 6}, 18.0},
 	}
 
 	// This is an example of Table Driven Testing:
