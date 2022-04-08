@@ -19,9 +19,9 @@ func TestArea(t *testing.T) {
 		Shape    Shape
 		Expected float64
 	}{
-		{Rectangle{2.0, 4.0}, 8.0},
-		{Circle{10.0}, 314.1592653589793},
-		{Triangle{6, 6}, 18.0},
+		{Shape: Rectangle{Width: 2.0, Height: 4.0}, Expected: 8.0},
+		{Shape: Circle{Radius: 10.0}, Expected: 314.1592653589793},
+		{Shape: Triangle{Base: 6, Height: 6}, Expected: 18.0},
 	}
 
 	// This is an example of Table Driven Testing:
