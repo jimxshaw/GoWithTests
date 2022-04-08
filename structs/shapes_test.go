@@ -19,6 +19,9 @@ func TestArea(t *testing.T) {
 		Shape    Shape
 		Expected float64
 	}{
+		// Run individual Table Tests with the following:
+		// go test -run {TestName}/{SpecificTest}
+		// go test -run TestArea/Rectangle
 		{Shape: Rectangle{Width: 2.0, Height: 4.0}, Expected: 8.0},
 		{Shape: Circle{Radius: 10.0}, Expected: 314.1592653589793},
 		{Shape: Triangle{Base: 6, Height: 6}, Expected: 18.0},
@@ -32,7 +35,7 @@ func TestArea(t *testing.T) {
 		if got != tableTest.Expected {
 			// The g format string will print more
 			// precise decimal number in the message.
-			t.Errorf("expected %g but got %g", tableTest.Expected, got)
+			t.Errorf("%#v expected %g but got %g", tableTest.Shape, tableTest.Expected, got)
 		}
 	}
 }
