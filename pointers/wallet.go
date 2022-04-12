@@ -8,6 +8,12 @@ import "fmt"
 // declared on the new type.
 type Bitcoin int
 
+// Implementing Stringer interface on new Bitcoin type.
+// This defines how your type is print when using %s format.
+func (b Bitcoin) String() string {
+	return fmt.Sprintf("%d BTC", b)
+}
+
 type Wallet struct {
 	balance Bitcoin
 }
