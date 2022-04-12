@@ -2,16 +2,22 @@ package pointers
 
 import "fmt"
 
+// Creating a new type from existing one:
+// type MyName OriginalType
+// This is useful as methods can be
+// declared on the new type.
+type Bitcoin int
+
 type Wallet struct {
-	balance int
+	balance Bitcoin
 }
 
-func (w *Wallet) Deposit(amount int) {
+func (w *Wallet) Deposit(amount Bitcoin) {
 	fmt.Printf("address of balance in Deposit is %v \n", &w.balance)
 	w.balance += amount
 }
 
-func (w *Wallet) Balance() int {
+func (w *Wallet) Balance() Bitcoin {
 	// (*w).balance is also valid syntax but explicit dereferencing
 	// isn't necessary as struct pointers are automatically dereferenced.
 	return w.balance
