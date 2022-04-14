@@ -23,6 +23,10 @@ func (w *Wallet) Deposit(amount Bitcoin) {
 	w.balance += amount
 }
 
+func (w *Wallet) Withdraw(amount Bitcoin) {
+	w.balance -= amount
+}
+
 func (w *Wallet) Balance() Bitcoin {
 	// (*w).balance is also valid syntax but explicit dereferencing
 	// isn't necessary as struct pointers are automatically dereferenced.
