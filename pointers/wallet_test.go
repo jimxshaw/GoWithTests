@@ -15,10 +15,14 @@ func TestWallet(t *testing.T) {
 		}
 	}
 
-	assertError := func(t testing.TB, err error) {
+	assertError := func(t testing.TB, got error, expected string) {
 		t.Helper()
-		if err == nil {
-			t.Error("expected an error but didn't get one")
+		if got == nil {
+			t.Fatal("didn't get an error but expected one")
+		}
+
+		if got.Error() != expected {
+			t.Errorf("got %q expect %q", got, expected)
 		}
 	}
 
@@ -49,7 +53,7 @@ func TestWallet(t *testing.T) {
 		wallet := Wallet{startingBalance}
 		err := wallet.Withdraw(Bitcoin(200))
 
-		assertError(t, err)
+		assertError(t, err, "cannot withdraw, insufficient funds")
 		assertBalance(t, wallet, startingBalance)
 	})
 
