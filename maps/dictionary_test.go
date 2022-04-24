@@ -13,19 +13,22 @@ func TestSearch(t *testing.T) {
 	})
 
 	t.Run("term doesn't exist", func(t *testing.T) {
-		_, err := dictionary.Search("unknown")
-		want := "search term cannot be found"
+		_, got := dictionary.Search("unknown")
 
-		if err == nil {
-			t.Fatal("expected to get an error")
-		}
-
-		assertStrings(t, err.Error(), want)
+		assertError(t, got, ErrNotFound)
 	})
 
 }
 
 func assertStrings(t testing.TB, got, want string) {
+	t.Helper()
+
+	if got != want {
+		t.Errorf("got %q want %q given, %q", got, want, "test")
+	}
+}
+
+func assertError(t testing.TB, got, want error) {
 	t.Helper()
 
 	if got != want {
